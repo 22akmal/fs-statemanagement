@@ -3,10 +3,10 @@ import { useAnecdotesControl } from "../store"
 const AnecdoteForm = () => {
   const {addAnecdote} = useAnecdotesControl()
 
-  const newAnecdote = (e) => {
+  const newAnecdote = async (e) => {
     e.preventDefault()
     const anecdote = e.target.anecdote.value
-    addAnecdote(anecdote)
+    await addAnecdote(anecdote)
     e.target.reset()
   }
 
