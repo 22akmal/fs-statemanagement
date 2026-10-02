@@ -36,8 +36,17 @@ const useAnecdoteStore = create((set, get) => ({
       const newAnecdote = await anecdoteService.createNew(anecdote)
       set(state => ({anecdotes: state.anecdotes.concat(newAnecdote)}))
     },
-    setFilter: value => set(() => ({filter : value}))
+    setFilter: value => set(() => ({filter : value})),
+    deleteAnecdote: async (id) => {
+      await anecdoteService.deleteAnecdote(id)
+      set(state => ({anecdotes : state.anecdotes.filter(a => a.id !== id)}))
+    }
   },
+}))
+
+const useNotifStore = create((set) => ({
+  notif: '',
+  setNotif: message => set(() => ({notif: message}))
 }))
 
 export const useAnecdotes = () => {
@@ -47,3 +56,6 @@ export const useAnecdotes = () => {
   return anecdotes.filter(anecdote => anecdote.content.includes(filter))
 }
 export const useAnecdotesControl = () => useAnecdoteStore((state) => state.actions)
+
+export const useNotif = () => useNotifStore((state) => state.notif)
+export const useNotifControl = () => useNotifStore((state) => state.setNotif)

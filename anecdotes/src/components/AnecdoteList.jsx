@@ -1,11 +1,19 @@
 import { useAnecdotes, useAnecdotesControl } from "../store"
+import { useNotifControl } from "../store"
 
 const AnecdoteList = () => {
   const anecdotes = useAnecdotes().toSorted((a, b) => b.votes - a.votes)
-  const {addVote} = useAnecdotesControl()
+  const {addVote, deleteAnecdote} = useAnecdotesControl()
+  const setNotif = useNotifControl()
 
-  const vote = (id) => {
-    addVote(id)
+  const vote = async (id, content) => {
+    await addVote(id)
+    setNotif(`you voted '${content}'`)
+    setTimeout(() => setNotif(''), 5000)
+  }
+
+  const delAnecdote = (id) => {
+    deleteAnecdote(id)
   }
 
   return (
@@ -15,7 +23,7 @@ const AnecdoteList = () => {
           <div>{anecdote.content}</div>
           <div>
             has {anecdote.votes}
-            <button onClick={() => vote(anecdote.id)}>vote</button>
+            <button onClick={() => vote(anecdote.id, anecdote.content)}>vote</button>{!anecdote.votes && <button onClick={() => delAnecdote(anecdote.id)}>delete</button>}
           </div>
         </div>
       ))}
