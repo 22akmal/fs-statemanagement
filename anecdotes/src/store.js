@@ -53,9 +53,11 @@ export const useAnecdotes = () => {
   const anecdotes = useAnecdoteStore((state) => state.anecdotes)
   const filter = useAnecdoteStore((state) => state.filter)
 
-  return anecdotes.filter(anecdote => anecdote.content.includes(filter))
+  return anecdotes.filter(anecdote => anecdote.content.includes(filter)).toSorted((a, b) => b.votes - a.votes)
 }
 export const useAnecdotesControl = () => useAnecdoteStore((state) => state.actions)
 
 export const useNotif = () => useNotifStore((state) => state.notif)
 export const useNotifControl = () => useNotifStore((state) => state.setNotif)
+
+export default useAnecdoteStore

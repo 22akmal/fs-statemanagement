@@ -2,7 +2,7 @@ import { useAnecdotes, useAnecdotesControl } from "../store"
 import { useNotifControl } from "../store"
 
 const AnecdoteList = () => {
-  const anecdotes = useAnecdotes().toSorted((a, b) => b.votes - a.votes)
+  const anecdotes = useAnecdotes()
   const {addVote, deleteAnecdote} = useAnecdotesControl()
   const setNotif = useNotifControl()
 
@@ -19,7 +19,7 @@ const AnecdoteList = () => {
   return (
     <div>
       {anecdotes.map((anecdote) => (
-        <div key={anecdote.id}>
+        <div key={anecdote.id} data-testid="anecdote-item">
           <div>{anecdote.content}</div>
           <div>
             has {anecdote.votes}
