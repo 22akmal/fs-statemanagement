@@ -3,12 +3,12 @@
     {
       "id": "c53fa8a6-80d2-4f37-b703-5191c1d80512",
       "content": "Make it work, then make it fast",
-      "votes": 0
+      "votes": 4
     },
     {
       "id": "090c0301-0f4b-4ea6-a2ba-0a8a9d095fa6",
       "content": "There are two hard things in computer science",
-      "votes": 3
+      "votes": 5
     },
     {
       "id": "c65fcb29-a39a-43e2-af84-8a3a8b81fcf1",
@@ -24,6 +24,21 @@
       "id": "29a85484-cb46-41bb-91bd-42b45e548e75",
       "content": "Real artists ship code",
       "votes": 7
+    },
+    {
+      "content": "example",
+      "votes": 1,
+      "id": "c26c143d-37f2-436c-b487-fc0bdab69843"
+    },
+    {
+      "content": "example 2",
+      "votes": 1,
+      "id": "ba16f8e5-37d5-460b-996f-582a9eaaa74c"
+    },
+    {
+      "content": "example 3",
+      "votes": 0,
+      "id": "87164135-b663-4eb2-aa59-773081d3b6b5"
     }
   ]
 }
